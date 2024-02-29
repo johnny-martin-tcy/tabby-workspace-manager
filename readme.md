@@ -12,7 +12,13 @@
 
 ## Getting Started
 
-`Last release of a plugin is available directly in Tabby's plugin tab`
+- Download the [latest release](https://github.com/johnny-tcy/tabby-workspace-manager/releases)
+- Locate your plugin folder by clicking Tabby's dedicated button (`%AppData%\tabby\plugins` for Windows users): <img src="https://github.com/johnny-tcy/tabby-workspace-manager/assets/121796416/985c063d-6e94-4085-858b-36c4e65d4d8d">
+- Create a `node_modules` folder in the `plugins` folder, if it does not already exist
+- Unzip the content of the downloaded release in a folder named `tabby-workspace-manager`, inside the `node_modules` folder
+- Restart Tabby
+
+You should now have access to the workspace settings tab.
 
 ## General
 
@@ -20,7 +26,7 @@
 The plugin adds a new tab in Tabby's settings. It is possible to add, delete and edit workspace profiles here. Additionally, you can add a default profile and enable it on the terminal startup (upper right corner). In the hotkeys tab, it is possible to set keyboard shortcuts for the first five workspace profiles.
 </p>
 
-<img src="https://raw.githubusercontent.com/composer404/tabby-workspace-manager/master/docs/tabby-workspace-manager.jpg" style="border-radius: 10px">
+<img src="https://github.com/johnny-tcy/tabby-workspace-manager/assets/121796416/05fd7f96-a80e-4322-982c-d3d360092755">
 
 <p>
     The config contains a list of tabs and its attributes:
