@@ -79,7 +79,7 @@ export class WorkspaceManagerService {
                 const selectedProfile = this.findTerminalProfile(profiles, element);
                 const tab = (await this.profileService.openNewTabForProfile(
                     selectedProfile,
-                )) as BaseTerminalTabComponent;
+                )) as BaseTerminalTabComponent<Profile>;
 
                 const subscription = tab.activity$.subscribe(() => {
                     setTimeout(() => {
@@ -108,7 +108,7 @@ export class WorkspaceManagerService {
         return profiles[0];
     }
 
-    private customizeTab(tab: BaseTerminalTabComponent, element: TabConfig): void {
+    private customizeTab(tab: BaseTerminalTabComponent<Profile>, element: TabConfig): void {
         if (element.title) {
             tab.setTitle(element.title);
             tab.customTitle = element.title;

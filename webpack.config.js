@@ -21,7 +21,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 loader: 'ts-loader',
-                query: {
+                options: {
                     configFile: path.resolve(__dirname, 'tsconfig.json'),
                 },
             },

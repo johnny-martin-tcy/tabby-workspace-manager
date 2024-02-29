@@ -1,24 +1,21 @@
 {
-  "compilerOptions": {
-    "baseUrl": "src",
-    "module": "commonjs",
-    "target": "es2016",
-    "noImplicitAny": false,
-    "removeComments": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "declaration": true,
-    "declarationDir": "dist",
-    "lib": [
-      "dom",
-      "es2015",
-      "es7"
-    ]
-  },
-  "exclude": ["node_modules", "dist"]
+    "compilerOptions": {
+        "baseUrl": "src",
+        "module": "es2015",
+        "target": "es2016",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "removeComments": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "declaration": true,
+        "declarationDir": "dist",
+        "lib": ["DOM", "ES5", "ES6", "ES7", "ES2015", "ES2017", "ES2019", "ES2021"]
+    },
+    "exclude": ["node_modules", "dist"]
 }

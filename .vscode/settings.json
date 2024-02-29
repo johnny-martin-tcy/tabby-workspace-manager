@@ -1,7 +1,7 @@
 {
     // Editor and explorer.
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.detectIndentation": false,
@@ -27,7 +27,7 @@
     // JavaScript.
     "javascript.suggestionActions.enabled": false,
     "[javascript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 
     // TypeScript.
