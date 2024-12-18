@@ -1,3 +1,5 @@
+import { SplitDirection } from 'tabby-core';
+
 export interface WorkspaceProfile {
     tabs?: TabConfig[];
     name: string;
@@ -8,6 +10,8 @@ export interface TabConfig {
     color?: string;
     profile?: string;
     commands?: string[];
+    split?: SplitDirection;
+    secondTab?: TabConfig;
 }
 
 export interface TabCommand {

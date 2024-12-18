@@ -12,11 +12,11 @@
 
 ## Getting Started
 
-- Download the [latest release](https://github.com/johnny-tcy/tabby-workspace-manager/releases)
-- Locate your plugin folder by clicking Tabby's dedicated button (`%AppData%\tabby\plugins` for Windows users): <img src="https://github.com/johnny-tcy/tabby-workspace-manager/assets/121796416/985c063d-6e94-4085-858b-36c4e65d4d8d">
-- Create a `node_modules` folder in the `plugins` folder, if it does not already exist
-- Unzip the content of the downloaded release in a folder named `tabby-workspace-manager`, inside the `node_modules` folder
-- Restart Tabby
+-   Download the [latest release](https://github.com/johnny-tcy/tabby-workspace-manager/releases)
+-   Locate your plugin folder by clicking Tabby's dedicated button (`%AppData%\tabby\plugins` for Windows users): <img src="https://github.com/johnny-tcy/tabby-workspace-manager/assets/121796416/985c063d-6e94-4085-858b-36c4e65d4d8d">
+-   Create a `node_modules` folder in the `plugins` folder, if it does not already exist
+-   Unzip the content of the downloaded release in a folder named `tabby-workspace-manager`, inside the `node_modules` folder
+-   Restart Tabby
 
 You should now have access to the workspace settings tab.
 
@@ -45,16 +45,45 @@ The plugin adds a new tab in Tabby's settings. It is possible to add, delete and
 
 ## Example workspace config
 
+Open three different tabs:
+
 ```
-    - title: Example Title 1
-      color: '#03fccf'
-      profile: CMD (clink)
+- title: Example Title 1
+  color: '#03fccf'
+  profile: CMD (clink)
+  commands:
+    - ls
+    - cd ..
+- title: Example Title 2
+  color: '#fc036b'
+  profile: 1
+- title: Example Title 3
+  color: '#302a57'
+```
+
+Open one tab vertically splitted and split horizontally the right side :
+
+```
+- title: Example Title 1
+  color: '#03fccf'
+  profile: CMD (clink)
+  commands:
+    - echo "This is the left side of the tab"
+  split: r
+  secondTab:
+    commands:
+      - echo "This is the top-right side of the tab"
+    split: b
+    secondTab:
       commands:
-         - ls
-         - cd ..
-    - title: Example Title 2
-      color: '#fc036b'
-      profile: 1
-    - title: Example Title 3
-      color: '#302a57'
+        - echo "This is the bottom-right side of the tab"
 ```
+
+Possible values for `split`:
+
+-   `r`: split to the right
+-   `b`: split to the bottom
+-   `l`: split to the left
+-   `t`: split to the top
+
+Only top-level title, color and profile apply to all splitted parts of the tab.

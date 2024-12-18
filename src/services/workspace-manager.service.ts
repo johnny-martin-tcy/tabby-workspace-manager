@@ -1,5 +1,5 @@
 import { HOT_KEYS, TabConfig, WorkspaceProfile } from '../interfaces/interfaces';
-import { PartialProfile, PlatformService, Profile, ProfilesService } from 'tabby-core';
+import { PartialProfile, PlatformService, Profile, ProfilesService, SplitTabComponent } from 'tabby-core';
 import { getWorkspaceConfigPath, loadWorkspaceConfig, saveWorkspaceConfig } from '../workspace-config';
 
 import { BaseTerminalTabComponent } from 'tabby-terminal';
@@ -8,6 +8,7 @@ import { ElectronService } from 'tabby-electron';
 import { HotkeysService } from 'tabby-core';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { delay, from, take } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class WorkspaceManagerService {
@@ -80,15 +81,24 @@ export class WorkspaceManagerService {
                 const tab = (await this.profileService.openNewTabForProfile(
                     selectedProfile,
                 )) as BaseTerminalTabComponent<Profile>;
-
-                const subscription = tab.activity$.subscribe(() => {
-                    setTimeout(() => {
-                        this.customizeTab(tab, element);
-                        subscription.unsubscribe();
-                    }, 50);
-                });
+                this.configureTab(tab, element);
             }
         }
+    }
+
+    private configureTab(tab: BaseTerminalTabComponent<Profile>, config: TabConfig): void {
+        tab.activity$.pipe(delay(100), take(1)).subscribe(() => {
+            this.customizeTab(tab, config);
+            if (config.split && config.secondTab) {
+                from((tab.parent as SplitTabComponent).splitTab(tab, config.split))
+                    .pipe(take(1))
+                    .subscribe((newTab) => {
+                        config.secondTab.title = config.title;
+                        config.secondTab.color = config.color;
+                        this.configureTab(newTab as BaseTerminalTabComponent<Profile>, config.secondTab);
+                    });
+            }
+        });
     }
 
     private findTerminalProfile(profiles: PartialProfile<Profile>[], element: TabConfig): PartialProfile<Profile> {
